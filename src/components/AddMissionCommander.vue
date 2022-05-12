@@ -74,11 +74,11 @@ export default {
     return {
       missioncommander: {
         id: null,
-        name: "name",
-        username: "username",
-        mainStack: "mainStack",
-        currentEnrollments: "true",
-        hasAzureCertification: "true"
+        name: "",
+        username: "",
+        mainStack: "",
+        currentEnrollments: "",
+        hasAzureCertification: ""
       },
       submitted: false
     };
@@ -92,13 +92,13 @@ export default {
         currentEnrollments: (this.missioncommander.currentEnrollments === 'true'),
         hasAzureCertification: (this.missioncommander.hasAzureCertification === 'true')
       };
-    missionCommanderService.create(data)
-      .then(response => {
-        this.missioncommander.id = response.data.id;
-        this.submitted = true;
-      })
-      .catch(e => {
-        console.log(e);
+      missionCommanderService.create(data)
+        .then(response => {
+          this.missioncommander.id = response.data.id;
+          this.submitted = true;
+        })
+        .catch(e => {
+          console.log(e);
       });
     },
     newMissionCommander() {
