@@ -60,14 +60,14 @@
       <button @click="saveMissionCommander" class="btn btn-success">Agregar</button>
     </div>
     <div v-else>
-      <h4> Explorer creado exitosamente. </h4>
+      <h4> Mission Commander creado exitosamente. </h4>
       <button class="btn btn-success" @click="newMissionCommander">Add</button>
     </div>
   </div>
 </template>
 
 <script>
-import missionCommanderService from "../services/ExplorerService";
+import missionCommanderService from "../services/missionCommanderService";
 export default {
   name: "add-missioncommander",
   data() {
@@ -89,8 +89,8 @@ export default {
         name: this.missioncommander.name,
         username: this.missioncommander.username,
         mainStack: this.missioncommander.mainStack,
-        currentEnrollments: this.missioncommander.currentEnrollments,
-        hasAzureCertification: this.missioncommander.hasAzureCertification
+        currentEnrollments: (this.missioncommander.currentEnrollments === 'true'),
+        hasAzureCertification: (this.missioncommander.hasAzureCertification === 'true')
       };
     missionCommanderService.create(data)
       .then(response => {
